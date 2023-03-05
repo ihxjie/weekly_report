@@ -5,7 +5,7 @@
 [![Weekly Report](./public/screenshot.jpg)](https://report.ihxjie.cn/zh)
 
 ## 这个项目是如何工作的
-这个项目主要使用了 [OpenAI GPT-3 API](https://openai.com/api/) 和 [Vercel Edge functions](https://vercel.com/features/edge-functions)。它根据用户输入构建一个 Prompt，通过 Vercel Edge 函数将其发送到 GPT-3 API，然后将响应流传回应用程序。
+这个项目主要使用了 [OpenAI GPT-3.5 Turbo API](https://platform.openai.com/) 和 [Vercel Edge functions](https://vercel.com/features/edge-functions)。它根据用户输入构建一个 Prompt，通过 Vercel Edge 函数将其发送到 GPT-3 API，然后将响应流传回应用程序。
 
 ## 在本地运行
 

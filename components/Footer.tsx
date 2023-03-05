@@ -25,9 +25,8 @@ export default function Footer() {
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
-          href="https://github.com/guaguaguaxia/weekly_report"
+          href="https://github.com/ihxjie/weekly_report"
           className="group"
-          aria-label="TaxPal on GitHub"
         >
           <svg
             aria-hidden="true"

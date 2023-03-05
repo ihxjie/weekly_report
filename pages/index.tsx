@@ -5,9 +5,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from 'next-intl'
 import { Toaster, toast } from "react-hot-toast";
-import DropDown, { FormType } from "../components/DropDown";
+
 import Footer from "../components/Footer";
-import Github from "../components/GitHub";
 
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
@@ -19,15 +18,11 @@ const Home: NextPage = () => {
 
   const [loading, setLoading] = useState(false);
   const [chat, setChat] = useState("");
-  const [form, setForm] = useState<FormType>("paragraphForm");
   const [generatedChat, setGeneratedChat] = useState<String>("");
 
   console.log("Streamed response: ", generatedChat);
 
-  const prompt =
-    form === 'paragraphForm'?
-      `${t('prompt')}${chat}`
-      : `${t('prompt')}${chat}`;
+  const prompt = `${t('prompt')}${chat}`
 
   const generateChat = async (e: any) => {
     e.preventDefault();
@@ -132,7 +127,7 @@ const Home: NextPage = () => {
                 {t('privacyPolicy1')}
               <a
                 className="text-blue-200 hover:text-blue-400"
-                href="https://github.com/guaguaguaxia/weekly_report/blob/main/privacy.md"
+                href="https://github.com/ihxjie/weekly_report/blob/main/privacy.md"
                 target="_blank"
                 rel="noopener noreferrer"
               >{' '}{t('privacyPolicy2')}</a>
