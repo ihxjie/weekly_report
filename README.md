@@ -33,10 +33,6 @@ npm run dev
 OPENAI_API_KEY=xxxxx
 ```
 
-## 感谢
-
-受 [TwtterBio](https://github.com/Nutlope/twitterbio) 和 [zhengbangbo](https://github.com/zhengbangbo/chat-simplifier) 启发.
-
 ## 来源
 
 分支来自于[guaguaguaxia/weekly_report](https://github.com/guaguaguaxia/weekly_report)同名项目
