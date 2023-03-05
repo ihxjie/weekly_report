@@ -20,7 +20,6 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [chat, setChat] = useState("");
   const [form, setForm] = useState<FormType>("paragraphForm");
-  const [api_key, setAPIKey] = useState("")
   const [generatedChat, setGeneratedChat] = useState<String>("");
 
   console.log("Streamed response: ", generatedChat);
@@ -30,36 +29,20 @@ const Home: NextPage = () => {
       `${t('prompt')}${chat}`
       : `${t('prompt')}${chat}`;
 
-  const useUserKey = process.env.NEXT_PUBLIC_USE_USER_KEY === "true" ? true : false;
-
   const generateChat = async (e: any) => {
     e.preventDefault();
     setGeneratedChat("");
     setLoading(true);
 
-    const response = useUserKey ?
-      await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt,
-          api_key,
-        }),
-      })
-    :
-      await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt,
-        }),
-      })
-
-    console.log("Edge function returned.");
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt,
+      }),
+    })
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -102,19 +85,6 @@ const Home: NextPage = () => {
         <p className="text-slate-500 mt-5">{t('slogan')}</p>
 
         <div className="max-w-xl w-full">
-          { useUserKey &&(
-            <>
-
-              <input
-                  value={api_key}
-                  onChange={(e) => setAPIKey(e.target.value)}
-                  className="w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-black focus:ring-black p-2"
-                  placeholder={
-                    t('openaiApiKeyPlaceholder')
-                  }
-                />
-            </>)
-          }
 
           <div className="flex mt-10 items-center space-x-3">
             <Image
@@ -190,7 +160,7 @@ const Home: NextPage = () => {
                       className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
                       onClick={() => {
                         navigator.clipboard.writeText(generatedChat.trim());
-                        toast("Chat copied to clipboard", {
+                        toast("内容已复制到剪贴板", {
                           icon: "✂️",
                         });
                       }}

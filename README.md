@@ -1,26 +1,42 @@
-# [Weekly Report](https://weeklyreport.avemaria.fun/)
+# [Weekly Report](https://report.ihxjie.cn/zh)
+
+简单描述工作内容，帮你生成完整周报
+
+[![Weekly Report](./public/screenshot.jpg)](https://report.ihxjie.cn/zh)
+
+## 这个项目是如何工作的
+这个项目主要使用了 [OpenAI GPT-3 API](https://openai.com/api/) 和 [Vercel Edge functions](https://vercel.com/features/edge-functions)。它根据用户输入构建一个 Prompt，通过 Vercel Edge 函数将其发送到 GPT-3 API，然后将响应流传回应用程序。
+
+## 在本地运行
+
+**OpenAI API 的域名 api.openai.com 现无法在大陆网络环境下访问，可以通过Github提供的CodeSpaces进行调试**
+
+clone 此 repo，去 [OpenAI](https://beta.openai.com/account/api-keys) 注册一个账号，拿到 API key，放到 `.env` 文件。本地文件 `.env.example` 要改成 `.env`。
 
 
-This project generate weekly report with simple sentence for you using AI.
-
-[![Weekly Report](./public/screenshot.jpg)](https://weeklyreport.avemaria.fun/zh)
-
-## How it works
-
-This project uses the [OpenAI GPT-3 API](https://openai.com/api/) (specifically, text-davinci-003) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It constructs a prompt based on the form and user input, sends it to the GPT-3 API via a Vercel Edge function, then streams the response back to the application.
-
-## Running Locally
-
-After cloning the repo, go to [OpenAI](https://beta.openai.com/account/api-keys) to make an account and put your API key in a file called `.env`.
-
-Then, run the application in the command line and it will be available at `http://localhost:3000`.
-
+确保你本地的 npm 命令生效，执行以下命令
 ```bash
+npm install
 npm run dev
 ```
-
-## Credits
-
-Inspired by [TwtterBio](https://github.com/Nutlope/twitterbio) and [zhengbangbo](https://github.com/zhengbangbo/chat-simplifier).
+打开 `http://localhost:3000`
 
 
+## 线上一键部署
+
+用 [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples) 一键部署:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ihxjie/weekly_report&env=OPENAI_API_KEY&project-name=weekly_report&repo-name=weekly_report)
+
+环境变量如下所示：
+```
+OPENAI_API_KEY=xxxxx
+```
+
+## 感谢
+
+受 [TwtterBio](https://github.com/Nutlope/twitterbio) 和 [zhengbangbo](https://github.com/zhengbangbo/chat-simplifier) 启发.
+
+## 来源
+
+分支来自于[guaguaguaxia/weekly_report](https://github.com/guaguaguaxia/weekly_report)同名项目
